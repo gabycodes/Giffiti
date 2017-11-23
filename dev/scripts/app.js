@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import GetGifs from './getGifs';
 import SplashPage from './splash';
+import NavBar from './nav';
 import Intro from './intro';
 import PickCanvas from './pickCanvas';
 import EditCanvas from './editCanvas';
@@ -15,7 +16,7 @@ class App extends React.Component {
       userGif: ''
     }
   }
-  updateGif(gif) {
+  updateGif(gif) { // This function will be called later in SearchGifs (a child of this)
     console.log(gif);
 
   }
@@ -23,11 +24,11 @@ class App extends React.Component {
     
       return (
         <div className="appHolder">
-          <SplashPage />
-          <Intro text={this.state.gaby} />
-          <PickCanvas />
-          <SearchGifs userGif={this.updateGif} />
-          {<EditCanvas />}
+          {/* <SplashPage /> */}
+          {/* <Intro text={this.state.gaby} /> */}
+          {/* <PickCanvas /> */}
+          <SearchGifs userGif={this.updateGif} /> {/* Passing our function down to this child */}
+          {/* {<EditCanvas />} */}
 
         </div>
       )
@@ -45,6 +46,7 @@ class SearchGifs extends React.Component {
     this.apiRequest = this.apiRequest.bind(this); // These make sure our custom functions
     this.handleSubmit = this.handleSubmit.bind(this);// have the right "this" value
     this.handleInput = this.handleInput.bind(this);
+    this.updateUserGif = this.updateUserGif.bind(this);
   }
   handleInput(event) {// When handleInput is called,
     // console.log(event.target);
@@ -54,13 +56,17 @@ class SearchGifs extends React.Component {
   }
   handleSubmit(event) {// When handleSubmit is called,
     event.preventDefault();// prevent it's default action
-
     this.apiRequest();// call searchGifs() method
-    
   }
+
+  updateUserGif(event) {
+    event.preventDefault();
+    // this.props.userGif('tiff');// Here we're using that function that we sent from the parent!
+    console.log(event.target.src);
+  }
+
   apiRequest() {
     const apiKey = "mmsHSa9HdKPB0e9TU72QRcTK6H22ugWE";
-    // searchQuery = 
 
     axios({
       method: 'get',
@@ -84,13 +90,16 @@ class SearchGifs extends React.Component {
   render() {
     const gifs = this.state.gifArray.map((gif, index) => {// We're making a new array out of our gifArray
       return (
-        <GetGif src={gif.images.original.url} key={index} updateGif={this.props.userGif}/>// src and key are props
+        <a href="" onClick={this.updateUserGif}>
+          <img src={gif.images.original.url} key={index} alt="" />
+        </a>
       )
     })
 
     return (
       <section className="pickGif">
-        {/* <NavBar /> */}
+        <img src="https://media1.giphy.com/media/RMfTVxILkMWUE/giphy.gif" alt=""/>
+        <NavBar />
         <h2>Choose a sweet gif.</h2>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="gifSearch"></label>
@@ -103,27 +112,5 @@ class SearchGifs extends React.Component {
     )
   }
 }
-
-class GetGif extends React.Component {
-  constructor() {
-    super();
-    
-    this.updateUserGif = this.updateUserGif.bind(this);
-  }
-
-  updateUserGif(event) {
-    event.preventDefault();
-    this.props.updateGif(this.props.src);
-  }
-
-  render() {
-    return (
-      <a href="" onClick={this.updateUserGif}>
-        <img src={this.props.src} alt="" />
-      </a>
-    )
-  }
-}
-
 
 ReactDOM.render(<App />, document.getElementById('app'));
