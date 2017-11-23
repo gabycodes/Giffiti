@@ -1,0 +1,47 @@
+body {
+    background: dodgerblue;
+    text-align: center;
+}
+
+.wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+section:not(.nav) {
+    height: 100vh;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.introPage {
+    background: rgb(128, 30, 255);
+}
+
+.pickCanvas {
+    background: dodgerblue;
+}
+
+.pickGif {
+    background: rgb(128, 30, 255);
+}
+.editCanvas {
+    background: dodgerblue;
+}
+
+h1, h2 {
+    margin: 0 auto;
+}
+
+.gifHolder {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    // height: auto;
+}
+.gifHolder img {
+    width: 30%;
+    // height: auto;
+}
