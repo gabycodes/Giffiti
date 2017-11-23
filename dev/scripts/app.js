@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import GetGifs from './getGifs';
-// import firebase from 'firebase';
-// import { connect } from 'react-firebase';
-
-// firebase.initializeApp({
-//   gifArraybaseURL: 'https://giffiti-8d947.firebaseio.com'
-// })
+import SplashPage from './splash';
+import Intro from './intro';
+import PickCanvas from './pickCanvas';
+import EditCanvas from './editCanvas';
 
 class App extends React.Component {
   constructor() {
@@ -29,69 +27,13 @@ class App extends React.Component {
           <Intro text={this.state.gaby} />
           <PickCanvas />
           <SearchGifs userGif={this.updateGif} />
-          {/* <EditCanvas /> */}
+          {<EditCanvas />}
 
         </div>
       )
     }
 }
 
-class SplashPage extends React.Component {
-  render() {
-    return (
-      <section className="splashPage">
-        <h1>GIFFITI</h1>
-        <button className="enterSite" >Start</button>
-      </section>
-    )
-  }
-}
-class NavBar extends React.Component {
-  render() {
-    return (
-      <section className="nav wrapper">
-        <a href="#">GIFFITI</a>
-        <a href="#">Twitter</a>
-      </section>
-    )
-  }
-}
-class Intro extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <section className="introPage">
-        <NavBar />
-        <h2>{this.props.text}</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta, dolor rem enim ut illum tempora assumenda? Fugit distinctio perferendis consequatur hic laboriosam iure! Temporibus ut iusto, corporis voluptates nisi magni quasi error dolorem eum perspiciatis maxime veniam, obcaecati voluptas voluptatibus veritatis molestias iste amet?</p>
-        <button className="enterSite">Continue</button>
-      </section>
-    )
-  }
-}
-class PickCanvas extends React.Component {
-  render() {
-    return (
-      <section className="pickCanvasPage">
-        <NavBar />
-        <h2>Choose a canvas</h2>
-        <a href="#" className="specialCanvas">
-          <img src="" alt=""/>
-          <p>HY Cohort 16</p>
-        </a>
-        <a href="#" className="newCanvas">
-          <img src="" alt=""/>
-          <p>So fresh and so clean, clean</p>
-        </a>
-      </section>
-    )
-  }
-}
-///////////////
 class SearchGifs extends React.Component {
   constructor(props) {
     super(props);
@@ -148,7 +90,7 @@ class SearchGifs extends React.Component {
 
     return (
       <section className="pickGif">
-        <NavBar />
+        {/* <NavBar /> */}
         <h2>Choose a sweet gif.</h2>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="gifSearch"></label>
@@ -182,19 +124,6 @@ class GetGif extends React.Component {
     )
   }
 }
-
-// class EditCanvas extends React.Component {
-//   render() {
-//     return (
-//       <section className="editCanvas">
-//         <NavBar />
-//         <h2>Add your gif</h2>
-
-//       </section>
-//     )
-//   }
-// }
-
 
 
 ReactDOM.render(<App />, document.getElementById('app'));
