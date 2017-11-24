@@ -15,10 +15,16 @@ class App extends React.Component {
       gaby: 'gabyyyy',
       userGif: ''
     }
+    this.updateUserGif = this.updateUserGif.bind(this);
   }
-  updateGif(gif) { // This function will be called later in SearchGifs (a child of this)
-    console.log(gif);
-
+  updateUserGif(event) {
+    event.preventDefault();
+    // this.props.userGif('tiff');// Here we're using that function that we sent from the parent!
+    // console.log(event.target.src);
+    this.setState({
+      userGif: event.target.src
+    }) 
+    console.log(this.state.userGif);
   }
     render() {
     
@@ -27,9 +33,8 @@ class App extends React.Component {
           {/* <SplashPage /> */}
           {/* <Intro text={this.state.gaby} /> */}
           {/* <PickCanvas /> */}
-          <SearchGifs userGif={this.updateGif} /> {/* Passing our function down to this child */}
-          {/* {<EditCanvas />} */}
-
+          <SearchGifs userGif={this.updateUserGif} /> {/* Passing our function down to this child */}
+          <EditCanvas />
         </div>
       )
     }
@@ -37,7 +42,7 @@ class App extends React.Component {
 
 class SearchGifs extends React.Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = {// These declare the states of things that will change eventually
       searchQuery: '',
       gifArray: []// An empty array that will be populated later
@@ -46,7 +51,7 @@ class SearchGifs extends React.Component {
     this.apiRequest = this.apiRequest.bind(this); // These make sure our custom functions
     this.handleSubmit = this.handleSubmit.bind(this);// have the right "this" value
     this.handleInput = this.handleInput.bind(this);
-    this.updateUserGif = this.updateUserGif.bind(this);
+    // this.callParentFunction = this.callParentFunction.bind(this);
   }
   handleInput(event) {// When handleInput is called,
     // console.log(event.target);
@@ -57,13 +62,7 @@ class SearchGifs extends React.Component {
   handleSubmit(event) {// When handleSubmit is called,
     event.preventDefault();// prevent it's default action
     this.apiRequest();// call searchGifs() method
-  }
-
-  updateUserGif(event) {
-    event.preventDefault();
-    // this.props.userGif('tiff');// Here we're using that function that we sent from the parent!
-    console.log(event.target.src);
-  }
+  }  
 
   apiRequest() {
     const apiKey = "mmsHSa9HdKPB0e9TU72QRcTK6H22ugWE";
@@ -75,7 +74,7 @@ class SearchGifs extends React.Component {
         api_key: apiKey,
         format: "json",
         q: this.state.searchQuery,
-        limit: 10
+        limit: 4
       }
     })
       .then((response) => {
@@ -90,15 +89,14 @@ class SearchGifs extends React.Component {
   render() {
     const gifs = this.state.gifArray.map((gif, index) => {// We're making a new array out of our gifArray
       return (
-        <a href="" onClick={this.updateUserGif}>
-          <img src={gif.images.original.url} key={index} alt="" />
+        <a href="" onClick={this.props.userGif} key={index}>
+          <img src={gif.images.original.url} alt="" />
         </a>
       )
     })
 
     return (
       <section className="pickGif">
-        <img src="https://media1.giphy.com/media/RMfTVxILkMWUE/giphy.gif" alt=""/>
         <NavBar />
         <h2>Choose a sweet gif.</h2>
         <form onSubmit={this.handleSubmit}>
