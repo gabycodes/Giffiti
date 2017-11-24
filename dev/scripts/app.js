@@ -27,14 +27,13 @@ class App extends React.Component {
     console.log(this.state.userGif);
   }
     render() {
-    
       return (
         <div className="appHolder">
           {/* <SplashPage /> */}
           {/* <Intro text={this.state.gaby} /> */}
           {/* <PickCanvas /> */}
           <SearchGifs userGif={this.updateUserGif} /> {/* Passing our function down to this child */}
-          <EditCanvas />
+          <EditCanvas userChosenGif={this.state.userGif}/>
         </div>
       )
     }
