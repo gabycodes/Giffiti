@@ -25,10 +25,10 @@ class Intro extends React.Component {
         dbRef.on("value", (firebaseData) => {
           const gifArray = [];
           const gifData = firebaseData.val();
-          for (let gifKey in gifData) {
-            gifData[gifKey].key = gifKey// We're adding a key property, in addition to name and item
-            gifArray.push(gifData[gifKey])
-          }
+          // for (let gifKey in gifData) {
+          //   gifData[gifKey].key = gifKey// We're adding a key property, in addition to name and item
+          //   gifArray.push(gifData[gifKey])
+          // }
         });
       }
       else {
@@ -52,7 +52,8 @@ class Intro extends React.Component {
 		if(this.state.password === this.state.confirm) {
 			firebase.auth().createUserWithEmailAndPassword(this.state.email,this.state.password)// This method returns a promise
 			.then((data) => {
-				console.log(data);
+        console.log(data);
+        console.log(this.state.email);
 			})
 		}
 	}
@@ -60,7 +61,8 @@ class Intro extends React.Component {
 		e.preventDefault();
 		firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password)
 		.then((data) => {
-			console.log(data);
+      console.log(data);
+      console.log(this.state.email);
 		})
 	}
 

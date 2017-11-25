@@ -36,14 +36,18 @@ class App extends React.Component {
     }) 
     console.log(this.state.userGif);
   }
+  populateCanvas() {
+    
+  }
     render() {
       return (
+
         <div className="appHolder">
           {/* <SplashPage /> */}
           {<Intro text={this.state.gaby} />}
           {/* <PickCanvas /> */}
           <SearchGifs userGif={this.updateUserGif} /> {/* Passing our function down to this child */}
-          <EditCanvas userChosenGif={this.state.userGif}/>
+          <EditCanvas userChosenGif={this.state.userGif} userEmail={this.state.email}/>
         </div>
       )
     }
