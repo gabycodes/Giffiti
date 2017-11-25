@@ -71,44 +71,46 @@ class Intro extends React.Component {
     if(this.state.formToShow === 'signup') {
 			loginForm = (
 				<form onSubmit={this.signup} className="user-form">
-					<label htmlFor="email">Email: </label>
-					<input type="email" name="email" onChange={this.handleChange} />
-					<label htmlFor="password">Password: </label>
-					<input type="password" name="password" onChange={this.handleChange} />
-					<label htmlFor="confirm">Confirm Password:</label>
-					<input type="password" name="confirm" onChange={this.handleChange} />
-					<button>Sign In</button>
+					<label aria-hidden="true" htmlFor="email">Email: </label>
+					<input type="email" name="email" placeholder="email" onChange={this.handleChange} />
+					<label aria-hidden="true" htmlFor="password">Password: </label>
+					<input type="password" name="password" placeholder="password" onChange={this.handleChange} />
+					<label aria-hidden="true" htmlFor="confirm">Confirm Password:</label>
+					<input type="password" name="confirm" placeholder="confirm password" onChange={this.handleChange} />
+					<button>Submit</button>
 				</form>
 			);
 		}
 		else if(this.state.formToShow === "login") {
 			loginForm = (
 				<form onSubmit={this.login} className="user-form">
-					<label htmlFor="email">Email: </label>
-					<input type="email" name="email" onChange={this.handleChange}/>
-					<label htmlFor="password">Password: </label>
-					<input type="password" name="password" onChange={this.handleChange}/>
-					<button>Log In</button>
+					<label aria-hidden="true" htmlFor="email">Email: </label>
+          <input type="email" name="email" placeholder="email" onChange={this.handleChange}/>
+					<label aria-hidden="true" htmlFor="password">Password: </label>
+					<input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
+					<button>Submit</button>
 				</form>
 			);
 		}
     return (
       <section className="introPage">
         <NavBar />
-        <h2>{this.props.text}</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta, dolor rem enim ut illum tempora assumenda? Fugit distinctio perferendis consequatur hic laboriosam iure! Temporibus ut iusto, corporis voluptates nisi magni quasi error dolorem eum perspiciatis maxime veniam, obcaecati voluptas voluptatibus veritatis molestias iste amet?</p>
-
-        <div>
-          <nav>
-            <ul>
-              <li><a href="" className="signup" onClick={this.formToShow}>Sign Up</a></li>
-              <li><a href="" className="login" onClick={this.formToShow}>Log In</a></li>
-            </ul>
-          </nav>
+        <div className="wrapper">
+          <div className="content">
+            <h2>How it works</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta, dolor rem enim ut illum tempora assumenda? Fugit distinctio perferendis consequatur hic laboriosam iure! Temporibus ut iusto, corporis voluptates nisi magni quasi error dolorem eum perspiciatis maxime veniam, obcaecati voluptas voluptatibus veritatis molestias iste amet?</p>
+            <div>
+              <nav>
+                <ul className="clearfix">
+                  <li><a href="" className="signup" onClick={this.formToShow}>Sign Up</a></li>
+                  <li><a href="" className="login" onClick={this.formToShow}>Log In</a></li>
+                </ul>
+              </nav>
+            </div>
           {loginForm}
-        </div>
-        
-        <button className="enterSite">Continue</button>
+          </div> {/* closes .content */}
+        </div> {/* closes .wrapper */}
+        {/* <button className="enterSite">Continue</button> */}
       </section>
     )
   }

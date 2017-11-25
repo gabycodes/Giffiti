@@ -43,7 +43,7 @@ class App extends React.Component {
       return (
 
         <div className="appHolder">
-          {/* <SplashPage /> */}
+          <SplashPage />
           {<Intro text={this.state.gaby} />}
           {/* <PickCanvas /> */}
           <SearchGifs userGif={this.updateUserGif} /> {/* Passing our function down to this child */}

@@ -36,7 +36,7 @@ class SearchGifs extends React.Component {
         api_key: apiKey,
         format: "json",
         q: this.state.searchQuery,
-        limit: 4
+        limit: 35
       }
     })
       .then((response) => {
@@ -46,13 +46,14 @@ class SearchGifs extends React.Component {
           // gifArray becomes "response.data.data" 
           // ("data.data" are not variables, they are properties in our response array)
         })
+        console.log(response.data.data);
       });
   }
   render() {
     const gifs = this.state.gifArray.map((gif, index) => {// We're making a new array out of our gifArray
       return (
         <a href="" onClick={this.props.userGif} key={index}>
-          <img src={gif.images.original.url} alt="" />
+          <img src={gif.images.fixed_height_small.url} alt="" />
         </a>
       )
     })
@@ -67,7 +68,7 @@ class SearchGifs extends React.Component {
           <button type="submit">Search</button>
         </form>
 
-        <div className="gifHolder">{gifs}</div>
+        <div className="gifHolder clearfix">{gifs}</div>
       </section>
     )
   }

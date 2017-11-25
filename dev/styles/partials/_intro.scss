@@ -1,0 +1,48 @@
+.introPage .content {
+    width: 70%;
+    margin: 0;
+    display: block;
+    position: relative;
+}
+.introPage h2 {
+    text-align: left;
+}
+.introPage ul {
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    right: 0;
+}
+.introPage ul li {
+    float: left;
+    background: rgb(38, 150, 255);
+    padding: 10px 40px;
+    margin: 30px 0 10px 7px;
+}
+.introPage li a {
+    color: white;
+    font-size: 2rem;
+}
+.introPage form {
+    position: absolute;
+    bottom: -150px;
+    right: 0;
+}
+.introPage label {
+    opacity: 0;
+    position: absolute;
+}
+.introPage input, .introPage form button {
+    margin-left: 5px;
+    font-size: 1.5rem;
+    padding: 5px;
+    border: none;
+}
+.introPage input {
+    width: 150px;
+}
+.introPage form button {
+    padding: 5px 10px;
+    background: rgb(255, 44, 97);
+    color: white;
+}

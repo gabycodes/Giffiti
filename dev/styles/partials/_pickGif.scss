@@ -1,0 +1,31 @@
+.pickGif {
+    margin-top: 10vh;
+}
+.pickGif input, .pickGif form button {
+    margin-left: 5px;
+    font-size: 1.5rem;
+    padding: 5px;
+    border: none;
+}
+.pickGif input {
+    width: 250px;
+    margin-bottom: 11vh;
+}
+.pickGif form button {
+    padding: 5px 20px;
+    background: #2dd304;
+    color: white;
+    text-shadow: 0 0 1px #208800;
+}
+.gifHolder {
+    max-height: 95vh;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.gifHolder a {
+    width: 25%;
+}

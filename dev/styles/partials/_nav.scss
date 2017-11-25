@@ -1,0 +1,23 @@
+.nav {
+    background: rgb(10, 10, 10);
+    
+}
+.nav .wrapper {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.nav a.logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 4rem;
+    line-height: 4rem;
+    position: relative;
+    top: 1px;
+}
+.nav i {
+    font-size: 2.4rem;
+    color: white;
+    background: rgb(57, 149, 255);
+    padding: 7px;
+    margin: 1px 0;
+}
