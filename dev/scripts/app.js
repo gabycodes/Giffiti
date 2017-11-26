@@ -7,6 +7,7 @@ import NavBar from './nav';
 import Intro from './intro';
 import PickCanvas from './pickCanvas';
 import EditCanvas from './editCanvas';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const config = {
   apiKey: "AIzaSyCZAb1qh4-o-AKtFBeelJDRaxTo3Kiw-lw",

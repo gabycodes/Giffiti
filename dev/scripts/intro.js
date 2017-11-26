@@ -102,8 +102,8 @@ class Intro extends React.Component {
             <div>
               <nav>
                 <ul className="clearfix">
-                  <li><a href="" className="signup" onClick={this.formToShow}>Sign Up</a></li>
-                  <li><a href="" className="login" onClick={this.formToShow}>Log In</a></li>
+                  <li><button href="" className="signup" onClick={this.formToShow}>Sign Up</button></li>
+                  <li><button href="" className="login" onClick={this.formToShow}>Log In</button></li>
                 </ul>
               </nav>
             </div>

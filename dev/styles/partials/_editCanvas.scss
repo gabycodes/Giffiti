@@ -1,7 +1,19 @@
+.editCanvas h2 {
+    margin: 5vh auto;
+}
+
 .canvas {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    margin: 0 auto;
+    background: rgb(109, 109, 109);
+    width: 80%;
+    height: 70vh;
+
+}
+.gifHolder a:hover, .gifHolder a:focus, .gifHolder a:active {
+    border: 6px solid dodgerblue;
 }
 .canvas img {
     width: 20%;

@@ -34,11 +34,8 @@ p {
     line-height: 2.5rem;
     text-align: justify;
 }
-.canvas {
-    margin: 10% auto 0 auto;
-    width: 80%;
-    height: 70vh;
-    background: rgb(109, 109, 109);
+button, input {
+    border-radius: 1.5px;
 }
 img.userGif {
     width: 35%;

@@ -28,6 +28,8 @@
   "dependencies": {
     "firebase": "^4.6.2",
     "node-sass": "^4.7.1",
-    "react-firebase": "^2.2.7-4"
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-firebase": "^2.2.7-4",
+    "react-transition-group": "^1.2.1"
   }
 }

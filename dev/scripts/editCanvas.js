@@ -54,7 +54,7 @@ class EditCanvas extends React.Component {
             <section className="editCanvas">
                 <NavBar />
                 <h2>Add your gif</h2>
-                <div className="canvas">
+                <div className="canvas wrapper">
                     {this.state.gifArray.map((item, i) => {
                         console.log("Adding gifs to canvas...");
                         return <img src={this.state.gifArray[i]} key={item.key} className="userGif" />

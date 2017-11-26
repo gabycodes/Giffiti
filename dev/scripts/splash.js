@@ -2,6 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class SplashPage extends React.Component {
+    constructor() {
+        super();
+    }
+    nextPage(event) {
+        event.preventDefault();
+        $(this.target).css({background:blue});
+    }
     render() {
         return (
             <section className="splashPage">
@@ -15,7 +22,7 @@ class SplashPage extends React.Component {
                     <span className="t">T</span>
                     <span className="thirdI">I</span>
                 </h1>
-                <button className="enterSite">Start</button>
+                <button className="enterSite" onClick={this.nextPage} >Start</button>
                 </div>
             </section>
         )
