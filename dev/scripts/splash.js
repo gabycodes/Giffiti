@@ -4,14 +4,24 @@ import ReactDOM from 'react-dom';
 class SplashPage extends React.Component {
     constructor() {
         super();
+        this.state = {
+            nextPage: false
+        };
+        this.toggleClass = this.toggleClass.bind(this);
     }
-    nextPage(event) {
-        event.preventDefault();
-        $(this.target).css({background:blue});
+    toggleClass() {
+        const currentState = this.state.nextPage;
+        this.setState({
+            nextPage: !currentState
+        });
     }
+    // nextPage(event) {
+    //     event.preventDefault();
+    //     $(this.target).css({background:blue});
+    // }
     render() {
         return (
-            <section className="splashPage">
+            <section className={this.state.nextPage ? 'removePage splashPage' : 'splashPage'}>
                 <div className="content wrapper">  
                 <h1>
                     <span className="g">G</span>
@@ -22,7 +32,7 @@ class SplashPage extends React.Component {
                     <span className="t">T</span>
                     <span className="thirdI">I</span>
                 </h1>
-                <button className="enterSite" onClick={this.nextPage} >Start</button>
+                <button onClick={this.toggleClass}>Start</button>
                 </div>
             </section>
         )

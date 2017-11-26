@@ -7,7 +7,6 @@ import NavBar from './nav';
 import Intro from './intro';
 import PickCanvas from './pickCanvas';
 import EditCanvas from './editCanvas';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const config = {
   apiKey: "AIzaSyCZAb1qh4-o-AKtFBeelJDRaxTo3Kiw-lw",
@@ -45,9 +44,10 @@ class App extends React.Component {
 
         <div className="appHolder">
           <SplashPage />
-          {<Intro text={this.state.gaby} />}
+          <Intro text={this.state.gaby} />
           {/* <PickCanvas /> */}
-          <SearchGifs userGif={this.updateUserGif} /> {/* Passing our function down to this child */}
+          <SearchGifs userGif={this.updateUserGif} />
+           {/* Passing our function down to this child */}
           <EditCanvas userChosenGif={this.state.userGif} userEmail={this.state.email}/>
         </div>
       )

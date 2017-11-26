@@ -11,12 +11,14 @@ class Intro extends React.Component {
       formToShow: '',
       email: '',
       password: '',
-      confirm: ''
+      confirm: '',
+      nextPage: false
     };
     this.formToShow = this.formToShow.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
+    this.toggleClass = this.toggleClass.bind(this);
   }
   componentDidMount() {
     const dbRef = firebase.database().ref();
@@ -64,7 +66,13 @@ class Intro extends React.Component {
       console.log(data);
       console.log(this.state.email);
 		})
-	}
+  }
+  toggleClass() {
+    const currentState = this.state.nextPage;
+    this.setState({
+      nextPage: !currentState
+    });
+  }
 
   render() {
     let loginForm = '';
@@ -77,7 +85,7 @@ class Intro extends React.Component {
 					<input type="password" name="password" placeholder="password" onChange={this.handleChange} />
 					<label aria-hidden="true" htmlFor="confirm">Confirm Password:</label>
 					<input type="password" name="confirm" placeholder="confirm password" onChange={this.handleChange} />
-					<button>Submit</button>
+					<button onClick={this.toggleClass}>Submit</button>
 				</form>
 			);
 		}
@@ -88,12 +96,12 @@ class Intro extends React.Component {
           <input type="email" name="email" placeholder="email" onChange={this.handleChange}/>
 					<label aria-hidden="true" htmlFor="password">Password: </label>
 					<input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
-					<button>Submit</button>
+					<button onClick={this.toggleClass}>Submit</button>
 				</form>
 			);
 		}
     return (
-      <section className="introPage">
+      <section className={this.state.nextPage && this.state.email === "me@me.com" ? 'removePage introPage' : 'introPage'}>
         <NavBar />
         <div className="wrapper">
           <div className="content">

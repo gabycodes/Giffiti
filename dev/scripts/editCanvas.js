@@ -53,16 +53,14 @@ class EditCanvas extends React.Component {
         return (
             <section className="editCanvas">
                 <NavBar />
-                <h2>Add your gif</h2>
+                {/* <h2>Add your gif</h2> */}
                 <div className="canvas wrapper">
                     {this.state.gifArray.map((item, i) => {
                         console.log("Adding gifs to canvas...");
                         return <img src={this.state.gifArray[i]} key={item.key} className="userGif" />
-                        // return <GifItem data={item} key={item.key} src={userChosenGif} />
                     })}
-                    
                 </div>
-                <button className="saveCanvas" onClick={this.saveGifToCanvas}>Save!</button>
+                <button className="saveCanvas" onClick={this.saveGifToCanvas}>Add my Gif!</button>
             </section>
         )
     }

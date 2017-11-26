@@ -7,12 +7,14 @@ class SearchGifs extends React.Component {
     super();
     this.state = {// These declare the states of things that will change eventually
       searchQuery: '',
-      gifArray: []// An empty array that will be populated later
+      gifArray: [],// An empty array that will be populated later
       // gif: this.props.gif
+      nextPage: false
     }
     this.apiRequest = this.apiRequest.bind(this); // These make sure our custom functions
     this.handleSubmit = this.handleSubmit.bind(this);// have the right "this" value
     this.handleInput = this.handleInput.bind(this);
+    this.toggleClass = this.toggleClass.bind(this);
     // this.callParentFunction = this.callParentFunction.bind(this);
   }
   handleInput(event) {// When handleInput is called,
@@ -24,7 +26,14 @@ class SearchGifs extends React.Component {
   handleSubmit(event) {// When handleSubmit is called,
     event.preventDefault();// prevent it's default action
     this.apiRequest();// call searchGifs() method
-  }  
+  }
+
+  toggleClass() {
+    const currentState = this.state.nextPage;
+    this.setState({
+      nextPage: !currentState
+    });
+  }
 
   apiRequest() {
     const apiKey = "mmsHSa9HdKPB0e9TU72QRcTK6H22ugWE";
@@ -53,13 +62,13 @@ class SearchGifs extends React.Component {
     const gifs = this.state.gifArray.map((gif, index) => {// We're making a new array out of our gifArray
       return (
         <a href="" onClick={this.props.userGif} key={index}>
-          <img src={gif.images.fixed_height_small.url} alt="" />
+          <img src={gif.images.fixed_height_small.url} onClick={this.toggleClass} alt="" />
         </a>
       )
     })
 
     return (
-      <section className="pickGif">
+      <section className={this.state.nextPage ? 'removePage pickGif' : 'pickGif'}>
         <NavBar />
         <h2>Choose a sweet gif.</h2>
         <form onSubmit={this.handleSubmit}>

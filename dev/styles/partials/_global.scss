@@ -10,8 +10,29 @@ body {
     max-width: 800px;
     margin: 0 auto;
 }
+section {
+    // position: absolute;
+    background: rgb(34, 34, 34);
+    // width: 100vw;
+}
 section:not(.nav) {
-    min-height: 100vh;
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.editCanvas {
+    z-index: 1;
+}
+.pickGif {
+    z-index: 2;
+}
+.introPage {
+    z-index: 3;
+}
+.splashPage {
+    z-index: 9;
 }
 a {
     text-decoration: none;
@@ -60,4 +81,13 @@ img.userGif {
 }
 .thirdI {
     color: rgb(255, 102, 0);
+}
+
+.removePage {
+    // position: relative;
+    // left: 2vh;
+    display: none;
+}
+.showPage {
+    display: static;
 }

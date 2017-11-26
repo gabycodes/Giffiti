@@ -6,10 +6,10 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    margin: 0 auto;
-    background: rgb(109, 109, 109);
+    margin: 8vh auto 0 auto;
+    background: rgb(75, 75, 75);
     width: 80%;
-    height: 70vh;
+    height: 60vh;
 
 }
 .gifHolder a:hover, .gifHolder a:focus, .gifHolder a:active {
@@ -17,4 +17,14 @@
 }
 .canvas img {
     width: 20%;
+}
+button.saveCanvas {
+    border: none;
+    background: rgb(38, 150, 255);
+    color: white;
+    font-size: 1.8rem;
+    padding: 7px 40px;
+    margin-top: 5vh;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
