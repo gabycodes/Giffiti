@@ -6,6 +6,7 @@
 }
 .introPage h2 {
     text-align: left;
+    margin-bottom: 3vh;
 }
 .introPage ul {
     padding: 0;
@@ -15,11 +16,18 @@
 }
 .introPage ul li {
     float: left;
-    margin: 30px 0 10px 7px;
+    margin: 30px 0 10px 0;
+}
+.introPage ul li:last-of-type {
+    margin-left: 7px;
 }
 .introPage button {
     background: rgb(38, 150, 255);
     padding: 10px 40px;
+    transition: all 0.3s ease;
+}
+.introPage button:hover, .introPage button:focus, .introPage button:active {
+    background: rgb(9, 118, 219);
 }
 .introPage li button {
     color: white;
@@ -30,6 +38,7 @@
     position: absolute;
     bottom: -150px;
     right: 0;
+    text-align: right;
 }
 .introPage label {
     opacity: 0;
@@ -42,10 +51,20 @@
     border: none;
 }
 .introPage input {
-    width: 150px;
+    width: calc(30% - 15px);
 }
 .introPage form button {
     padding: 5px 10px;
     background: rgb(255, 44, 97);
     color: white;
+    transition: all 0.3s ease;
+}
+.introPage form button:hover, .introPage form button:focus, .introPage form button:active {
+    background: rgb(223, 20, 78);
+}
+.introPage .signup input[type="email"] {
+    margin-left: 0;
+}
+.introPage .signup button {
+    width: 15%;
 }

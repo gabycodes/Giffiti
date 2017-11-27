@@ -8,17 +8,14 @@ class SearchGifs extends React.Component {
     this.state = {// These declare the states of things that will change eventually
       searchQuery: '',
       gifArray: [],// An empty array that will be populated later
-      // gif: this.props.gif
       nextPage: false
     }
     this.apiRequest = this.apiRequest.bind(this); // These make sure our custom functions
     this.handleSubmit = this.handleSubmit.bind(this);// have the right "this" value
     this.handleInput = this.handleInput.bind(this);
     this.toggleClass = this.toggleClass.bind(this);
-    // this.callParentFunction = this.callParentFunction.bind(this);
   }
   handleInput(event) {// When handleInput is called,
-    // console.log(event.target);
     this.setState({// the state of something is going to change.
       searchQuery: event.target.value// The searchQuery becomes the value of the thing that was touched/triggered the event
     })
@@ -45,11 +42,10 @@ class SearchGifs extends React.Component {
         api_key: apiKey,
         format: "json",
         q: this.state.searchQuery,
-        limit: 35
+        limit: 25
       }
     })
       .then((response) => {
-        // console.log(response);
         this.setState({// The state of something is going to change
           gifArray: response.data.data// Here we populate our empty array with the array we get from our api
           // gifArray becomes "response.data.data" 

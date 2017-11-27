@@ -15,10 +15,38 @@
     position: relative;
     top: 1px;
 }
+.g, .i, .f, .secondF, .secondI, .t, .thirdI {
+    transition: all 0.3s ease;
+}
+.nav a.logo:hover .g, .nav a.logo:focus .g, .nav a.logo:active .g {
+    color: rgb(255, 225, 75);
+}
+.nav a.logo:hover .i, .nav a.logo:focus .i, .nav a.logo:active .i {
+    color: rgb(255, 74, 231);
+}
+.nav a.logo:hover .f, .nav a.logo:focus .f, .nav a.logo:active .f {
+    color: rgb(89, 216, 54);
+}
+.nav a.logo:hover .secondF, .nav a.logo:focus .secondF, .nav a.logo:active .secondF  {
+    color: rgb(255, 59, 59);
+}
+.nav a.logo:hover .secondI, .nav a.logo:focus .secondI, .nav a.logo:active .secondI{
+    color: rgb(253, 83, 131);
+}
+.nav a.logo:hover .t, .nav a.logo:focus .t, .nav a.logo:active .t {
+    color: rgb(80, 170, 255);
+}
+.nav a.logo:hover .thirdI, .nav a.logo:focus .thirdI, .nav a.logo:active .thirdI {
+    color: rgb(250, 131, 57);
+}
 .nav i {
     font-size: 2.4rem;
     color: white;
-    background: rgb(57, 149, 255);
+    background: rgb(76, 160, 255);
     padding: 7px;
     margin: 1px 0;
+    transition: all 0.3s ease;
+}
+.nav i:hover, .nav i:focus, .nav i:active {
+    background: rgb(37, 131, 231);
 }

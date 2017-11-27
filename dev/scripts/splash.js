@@ -15,10 +15,6 @@ class SplashPage extends React.Component {
             nextPage: !currentState
         });
     }
-    // nextPage(event) {
-    //     event.preventDefault();
-    //     $(this.target).css({background:blue});
-    // }
     render() {
         return (
             <section className={this.state.nextPage ? 'removePage splashPage' : 'splashPage'}>

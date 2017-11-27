@@ -1,22 +1,22 @@
 .editCanvas h2 {
     margin: 5vh auto;
 }
-
 .canvas {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
     margin: 8vh auto 0 auto;
-    background: rgb(75, 75, 75);
-    width: 80%;
-    height: 60vh;
-
+    background: transparent;
+    width: 100%;
+}
+.gifHolder a {
+    border: 6px solid transparent;
 }
 .gifHolder a:hover, .gifHolder a:focus, .gifHolder a:active {
     border: 6px solid dodgerblue;
 }
 .canvas img {
     width: 20%;
+    height: 115px;
 }
 button.saveCanvas {
     border: none;
@@ -24,7 +24,11 @@ button.saveCanvas {
     color: white;
     font-size: 1.8rem;
     padding: 7px 40px;
-    margin-top: 5vh;
+    margin: 5vh auto;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+button.saveCanvas:hover, button.saveCanvas:focus, button.saveCanvas:active {
+    background: rgb(14, 127, 226);
 }

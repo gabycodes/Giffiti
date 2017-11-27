@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import NavBar from './nav';
 
 class Intro extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -27,10 +26,6 @@ class Intro extends React.Component {
         dbRef.on("value", (firebaseData) => {
           const gifArray = [];
           const gifData = firebaseData.val();
-          // for (let gifKey in gifData) {
-          //   gifData[gifKey].key = gifKey// We're adding a key property, in addition to name and item
-          //   gifArray.push(gifData[gifKey])
-          // }
         });
       }
       else {
@@ -78,25 +73,25 @@ class Intro extends React.Component {
     let loginForm = '';
     if(this.state.formToShow === 'signup') {
 			loginForm = (
-				<form onSubmit={this.signup} className="user-form">
+				<form onSubmit={this.signup} className="user-form signup">
 					<label aria-hidden="true" htmlFor="email">Email: </label>
 					<input type="email" name="email" placeholder="email" onChange={this.handleChange} />
 					<label aria-hidden="true" htmlFor="password">Password: </label>
 					<input type="password" name="password" placeholder="password" onChange={this.handleChange} />
 					<label aria-hidden="true" htmlFor="confirm">Confirm Password:</label>
 					<input type="password" name="confirm" placeholder="confirm password" onChange={this.handleChange} />
-					<button onClick={this.toggleClass}>Submit</button>
+					<button onClick={this.toggleClass} className="submit" >Submit</button>
 				</form>
 			);
 		}
 		else if(this.state.formToShow === "login") {
 			loginForm = (
-				<form onSubmit={this.login} className="user-form">
+				<form onSubmit={this.login} className="user-form login">
 					<label aria-hidden="true" htmlFor="email">Email: </label>
           <input type="email" name="email" placeholder="email" onChange={this.handleChange}/>
 					<label aria-hidden="true" htmlFor="password">Password: </label>
 					<input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
-					<button onClick={this.toggleClass}>Submit</button>
+					<button onClick={this.toggleClass} className="submit" >Submit</button>
 				</form>
 			);
 		}
@@ -106,7 +101,8 @@ class Intro extends React.Component {
         <div className="wrapper">
           <div className="content">
             <h2>How it works</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta, dolor rem enim ut illum tempora assumenda? Fugit distinctio perferendis consequatur hic laboriosam iure! Temporibus ut iusto, corporis voluptates nisi magni quasi error dolorem eum perspiciatis maxime veniam, obcaecati voluptas voluptatibus veritatis molestias iste amet?</p>
+            <p>Gifs are awesome, amirite? GIFFITI is an interactive gif collage where you can save all your favourite gifs in one board, or come together with your friends and make a themed board.</p>
+            <p>*This site displays many gifs at once and demands a fair amount of data... Something to keep in mind if you're on mobile!</p>
             <div>
               <nav>
                 <ul className="clearfix">
@@ -118,7 +114,6 @@ class Intro extends React.Component {
           {loginForm}
           </div> {/* closes .content */}
         </div> {/* closes .wrapper */}
-        {/* <button className="enterSite">Continue</button> */}
       </section>
     )
   }

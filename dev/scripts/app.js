@@ -29,31 +29,22 @@ class App extends React.Component {
   }
   updateUserGif(event) {
     event.preventDefault();
-    // this.props.userGif('tiff');// Here we're using that function that we sent from the parent!
-    // console.log(event.target.src);
     this.setState({
       userGif: event.target.src
     }) 
     console.log(this.state.userGif);
   }
-  populateCanvas() {
-    
-  }
     render() {
       return (
-
         <div className="appHolder">
           <SplashPage />
-          <Intro text={this.state.gaby} />
+          <Intro />
           {/* <PickCanvas /> */}
           <SearchGifs userGif={this.updateUserGif} />
-           {/* Passing our function down to this child */}
           <EditCanvas userChosenGif={this.state.userGif} userEmail={this.state.email}/>
         </div>
       )
     }
 }
-
-
 
 ReactDOM.render(<App />, document.getElementById('app'));

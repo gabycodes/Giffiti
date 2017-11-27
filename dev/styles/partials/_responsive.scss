@@ -1,0 +1,107 @@
+@media (max-width: 850px) {
+    .nav .wrapper {
+        padding: 5px 6px;
+    }
+    .introPage .content {
+        margin: 0 auto;
+    }
+    .editCanvas .canvas a {
+        width: 25%;
+        height: 12vw;
+    }
+}
+@media (max-width: 800px) {
+    .canvas {
+        padding: 0 5px;
+    }
+    .canvas img {
+        width: 20%;
+        height: 14vw;
+    }
+}
+@media (max-width: 700px) {
+    h1 {
+        font-size: 25.5vw;
+    }
+    h2 {
+        font-size: 10vw;
+    }
+    .introPage .login input[type="email"] {
+        width: 100%;
+        margin: 0 0 5px 0;
+    }
+    .introPage .login input[type="password"] {
+        width: 65%;
+        margin: 0 0 5px 0;
+    }
+    .introPage button.submit {
+        width: calc(35% - 5px);
+    }
+    .pickGif .gifHolder a {
+        width: 25%;
+        height: 15vw;
+    }
+    .introPage form.signup {
+        bottom: -175px;
+    }
+    .introPage .signup input[type="email"] {
+        width: 100%;
+        margin: 5px 0;
+    }
+    .introPage .signup input[type="password"] {
+        width: 100%;
+        margin: 0 0 5px 0;
+    }
+    .introPage .signup input[name="confirm"] {
+        width: 65%;
+        margin: 0 0 5px 0;
+    }
+    .introPage ul li {
+        margin-top: 0;
+    }   
+}
+@media (max-width: 600px) {
+    .splashPage button {
+        font-size: 3vw;
+    }
+    .pickGif .gifHolder a {
+        width: 50%;
+        height: 30vw;
+    }
+    .introPage ul {
+        width: 100%;
+    }
+    .introPage ul li {
+        width: 50%;
+    }
+    .introPage li:last-of-type {
+        width: calc(50% - 7px);
+    }
+    .introPage li button {
+        padding: 10px 0;
+        width: 100%;
+    }
+    .canvas img {
+        width: 33.33%;
+        height: 20vw;
+    }
+}
+@media (max-width: 480px) {
+    .splashPage button {
+        bottom: -1.5vw;
+        font-size: 1.4rem;
+    }
+    .introPage p {
+        font-size: 3.7vw;
+    }
+    .pickGif input {
+        width: 61%;
+    }
+    .pickGif button {
+        width: 24%;
+    }
+    .canvas img {
+        width: 50%;
+        height: 30vw;
+    }
+}

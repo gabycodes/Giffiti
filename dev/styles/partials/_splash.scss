@@ -1,13 +1,9 @@
 .splashPage {
     padding-top: 25vh;
-    // display: flex;
-    // flex-direction: column;
-    // align-content: flex-end;
 }
 h1 {
     text-align: right;
     display: inline-block;
-    // float: right;
 }
 .content {
     display: inline-block;
@@ -16,12 +12,9 @@ h1 {
 }
 .splashPage .content {
     position: relative;
-    // right: 50%;
-    // transform: translateX(50%);
 }
 .splashPage button {
     display: inline-block;
-    // float: right;
     position: absolute;
     bottom: 0;
     right: 7px;
@@ -32,4 +25,8 @@ h1 {
     padding: 7px 40px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: all 0.25s ease;
+}
+.splashPage button:hover, .splashPage button:focus, .splashPage button:active {
+    background: rgb(45, 211, 4);;
 }

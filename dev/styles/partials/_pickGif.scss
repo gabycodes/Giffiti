@@ -14,15 +14,19 @@
     color: white;
     text-shadow: 0 0 1px #208800;
 }
+.pickGif form button:hover, .pickGif form button:focus, .pickGif form button:active {
+    background: #27c001;
+}
 .gifHolder {
     max-height: 95vh;
-    max-width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex-direction: column;
+    max-width: 80vw;
+    margin: 0 auto 10vh auto;
 }
 .gifHolder a {
-    width: 25%;
+    width: 20%;
+    float: left;
+    height: 12vw;
+}
+.gifHolder img {
+    height: -webkit-fill-available;
 }
