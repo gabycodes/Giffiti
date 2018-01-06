@@ -6,7 +6,7 @@ class NavBar extends React.Component {
         return (
             <section className="nav">
                 <div className="wrapper">
-                    <a href="#" className="logo">
+                    <a href="http://giffiti.gaby.codes" className="logo">
                         <span className="g">G</span>
                         <span className="i">I</span>
                         <span className="f">F</span>
