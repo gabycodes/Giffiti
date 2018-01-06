@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './nav';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class SearchGifs extends React.Component {
   constructor(props) {
@@ -10,10 +11,10 @@ class SearchGifs extends React.Component {
       gifArray: [],// An empty array that will be populated later
       nextPage: false
     }
+    this.pageNumber = 3;
     this.apiRequest = this.apiRequest.bind(this); // These make sure our custom functions
     this.handleSubmit = this.handleSubmit.bind(this);// have the right "this" value
     this.handleInput = this.handleInput.bind(this);
-    this.toggleClass = this.toggleClass.bind(this);
   }
   handleInput(event) {// When handleInput is called,
     this.setState({// the state of something is going to change.
@@ -23,13 +24,6 @@ class SearchGifs extends React.Component {
   handleSubmit(event) {// When handleSubmit is called,
     event.preventDefault();// prevent it's default action
     this.apiRequest();// call searchGifs() method
-  }
-
-  toggleClass() {
-    const currentState = this.state.nextPage;
-    this.setState({
-      nextPage: !currentState
-    });
   }
 
   apiRequest() {
@@ -51,19 +45,21 @@ class SearchGifs extends React.Component {
           // gifArray becomes "response.data.data" 
           // ("data.data" are not variables, they are properties in our response array)
         })
-        console.log(response.data.data);
+        // console.log(response.data.data);
       });
   }
   render() {
     const gifs = this.state.gifArray.map((gif, index) => {// We're making a new array out of our gifArray
       return (
         <a href="" onClick={this.props.userGif} key={index}>
-          <img src={gif.images.fixed_height_small.url} onClick={this.toggleClass} alt="" />
+          <img src={gif.images.fixed_height_small.url} onClick={() => {
+            this.context.setCurrentPage(4);
+          }} alt="" />
         </a>
       )
     })
 
-    return (
+    return this.context.currentPage === this.pageNumber ? (
       <section className={this.state.nextPage ? 'removePage pickGif' : 'pickGif'}>
         <NavBar />
         <h2>Choose a sweet gif.</h2>
@@ -75,8 +71,13 @@ class SearchGifs extends React.Component {
 
         <div className="gifHolder clearfix">{gifs}</div>
       </section>
-    )
+    ) :null
   }
+}
+
+SearchGifs.contextTypes = {
+  currentPage: PropTypes.number,
+  setCurrentPage: PropTypes.func
 }
 
 export default SearchGifs;

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import SearchGifs from './searchGifs';
 import SplashPage from './splash';
@@ -23,16 +24,47 @@ class App extends React.Component {
     super();
     this.state = {
       gaby: 'gabyyyy',
-      userGif: ''
+      userGif: '',
+      userEmail: '',
+      isAuth: false,
+      currentPage: 1
     }
     this.updateUserGif = this.updateUserGif.bind(this);
+    this.setEmail = this.setEmail.bind(this);
+    this.setIsAuth = this.setIsAuth.bind(this);
+    this.setCurrentPage = this.setCurrentPage.bind(this);
+  }
+  setCurrentPage(int) {
+    this.setState({
+      currentPage: int
+    })
+  }
+  setEmail(email) {
+    this.setState({
+      userEmail: email
+    })
+  }
+  setIsAuth(bool) {
+    this.setState({
+      isAuth: bool
+    })
+  }
+  getChildContext() {
+    return {
+      setEmail: this.setEmail,
+      setIsAuth: this.setIsAuth,
+      setCurrentPage: this.setCurrentPage,
+      userEmail: this.state.userEmail,
+      isAuth: this.state.isAuth,
+      currentPage: this.state.currentPage,
+    }
   }
   updateUserGif(event) {
     event.preventDefault();
     this.setState({
       userGif: event.target.src
     }) 
-    console.log(this.state.userGif);
+    // console.log(this.state.userGif);
   }
     render() {
       return (
@@ -45,6 +77,15 @@ class App extends React.Component {
         </div>
       )
     }
+}
+
+App.childContextTypes = {
+  setIsAuth: PropTypes.func,
+  setEmail: PropTypes.func,
+  setCurrentPage: PropTypes.func,
+  userEmail: PropTypes.string,
+  isAuth: PropTypes.bool,
+  currentPage: PropTypes.number
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

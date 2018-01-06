@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import NavBar from './nav';
+import PropTypes from 'prop-types';
 
 class Intro extends React.Component {
   constructor(props) {
@@ -13,11 +14,11 @@ class Intro extends React.Component {
       confirm: '',
       nextPage: false
     };
+    this.pageNumber = 2;
     this.formToShow = this.formToShow.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
-    this.toggleClass = this.toggleClass.bind(this);
   }
   componentDidMount() {
     const dbRef = firebase.database().ref();
@@ -49,8 +50,10 @@ class Intro extends React.Component {
 		if(this.state.password === this.state.confirm) {
 			firebase.auth().createUserWithEmailAndPassword(this.state.email,this.state.password)// This method returns a promise
 			.then((data) => {
-        console.log(data);
         console.log(this.state.email);
+        this.context.setIsAuth(true);
+        this.context.setEmail(this.state.email);
+        this.context.setCurrentPage(3);
 			})
 		}
 	}
@@ -60,13 +63,10 @@ class Intro extends React.Component {
 		.then((data) => {
       console.log(data);
       console.log(this.state.email);
+      this.context.setIsAuth(true);
+      this.context.setEmail(this.state.email);
+      this.context.setCurrentPage(3);
 		})
-  }
-  toggleClass() {
-    const currentState = this.state.nextPage;
-    this.setState({
-      nextPage: !currentState
-    });
   }
 
   render() {
@@ -80,7 +80,7 @@ class Intro extends React.Component {
 					<input type="password" name="password" placeholder="password" onChange={this.handleChange} />
 					<label aria-hidden="true" htmlFor="confirm">Confirm Password:</label>
 					<input type="password" name="confirm" placeholder="confirm password" onChange={this.handleChange} />
-					<button onClick={this.toggleClass} className="submit" >Submit</button>
+					<button className="submit" >Submit</button>
 				</form>
 			);
 		}
@@ -91,17 +91,18 @@ class Intro extends React.Component {
           <input type="email" name="email" placeholder="email" onChange={this.handleChange}/>
 					<label aria-hidden="true" htmlFor="password">Password: </label>
 					<input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
-					<button onClick={this.toggleClass} className="submit" >Submit</button>
+					<button className="submit" >Submit</button>
 				</form>
 			);
 		}
-    return (
-      <section className={this.state.nextPage && this.state.email === "me@me.com" ? 'removePage introPage' : 'introPage'}>
+    return this.context.currentPage === this.pageNumber ? (
+      <section className={"introPage"}>
         <NavBar />
         <div className="wrapper">
           <div className="content">
             <h2>How it works</h2>
             <p>Gifs are awesome, amirite? GIFFITI is an interactive gif collage where you can save all your favourite gifs in one board, or come together with your friends and make a themed board.</p>
+            <p>You're about to view HackerYou Cohort 16's favourite gifs and add your own to the collection!</p>
             <p>*This site displays many gifs at once and demands a fair amount of data... Something to keep in mind if you're on mobile!</p>
             <div>
               <nav>
@@ -115,8 +116,16 @@ class Intro extends React.Component {
           </div> {/* closes .content */}
         </div> {/* closes .wrapper */}
       </section>
-    )
+    ) : null
   }
+}
+
+Intro.contextTypes = {
+  setIsAuth: PropTypes.func,
+  setEmail: PropTypes.func,
+  isAuth: PropTypes.bool,
+  currentPage: PropTypes.number,
+  setCurrentPage: PropTypes.func
 }
 
 export default Intro;
