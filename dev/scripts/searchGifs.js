@@ -43,13 +43,11 @@ class SearchGifs extends React.Component {
         this.setState({// The state of something is going to change
           gifArray: response.data.data// Here we populate our empty array with the array we get from our api
           // gifArray becomes "response.data.data" 
-          // ("data.data" are not variables, they are properties in our response array)
         })
-        // console.log(response.data.data);
       });
   }
   render() {
-    const gifs = this.state.gifArray.map((gif, index) => {// We're making a new array out of our gifArray
+    const gifs = this.state.gifArray.map((gif, index) => {
       return (
         <a href="" onClick={this.props.userGif} key={index}>
           <img src={gif.images.fixed_height_small.url} onClick={() => {

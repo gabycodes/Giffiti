@@ -16,13 +16,11 @@ class EditCanvas extends React.Component {
         this.removePeriod = this.removePeriod.bind(this);
     }
     componentDidMount() {
-        // let email = this.removePeriod(this.context.userEmail);
         const dbRef = firebase.database().ref();
         let savedGifObject = {};
         dbRef.on("value", (data) => {
             savedGifObject = data.val();
             this.addToArray(savedGifObject);
-            // console.log(savedGifObject);
         })
     }
     addToArray(savedGifObject) {
@@ -30,13 +28,11 @@ class EditCanvas extends React.Component {
         let currentUsersGifs = [];
         let allGifs = [];
         for (const prop in savedGifObject) {
-            // console.log(prop);
             if (savedGifObject[prop].constructor === Object) {
                 savedArray.push(savedGifObject[prop]);
             }
         }
         
-        console.log(savedGifObject);
         if (this.context.currentPage === 4) {
             savedArray.map((item, i) => {
                 if (savedArray[i].userEmail === this.context.userEmail) {
@@ -54,9 +50,7 @@ class EditCanvas extends React.Component {
     saveGifToCanvas() {
         const userChosenGif = this.props.userChosenGif;
         const userName = this.removePeriod(this.context.userEmail);
-
         const dbRef = firebase.database().ref();
-        // console.log(`dbRef = ${dbRef}`);
         
         dbRef.push({
             url: userChosenGif,
@@ -67,11 +61,7 @@ class EditCanvas extends React.Component {
     }
 
     render() {
-        // console.log(this.state.gifArray);
-        // console.log(this.state.gifArray[0]);
-            // console.log(this.state.gifArray[i]);
         const gifs = this.state.gifArray.length > 0 ?this.state.gifArray.map((item, i) => {
-            // console.log(this.state.gifArray[i].userEmail);
             return <img src={this.state.gifArray[i].url} key={i} className="userGif" />
         }) : <p>Gifs are not available!</p>
 

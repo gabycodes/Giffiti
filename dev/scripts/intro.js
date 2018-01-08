@@ -48,9 +48,8 @@ class Intro extends React.Component {
 	signup(e) {
 		e.preventDefault();
 		if(this.state.password === this.state.confirm) {
-			firebase.auth().createUserWithEmailAndPassword(this.state.email,this.state.password)// This method returns a promise
+			firebase.auth().createUserWithEmailAndPassword(this.state.email,this.state.password)
 			.then((data) => {
-        console.log(this.state.email);
         this.context.setIsAuth(true);
         this.context.setEmail(this.state.email);
         this.context.setCurrentPage(3);
@@ -61,8 +60,6 @@ class Intro extends React.Component {
 		e.preventDefault();
 		firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password)
 		.then((data) => {
-      console.log(data);
-      console.log(this.state.email);
       this.context.setIsAuth(true);
       this.context.setEmail(this.state.email);
       this.context.setCurrentPage(3);

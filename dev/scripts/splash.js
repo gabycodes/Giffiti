@@ -12,8 +12,6 @@ class SplashPage extends React.Component {
         this.pageNumber = 1;
     }
     render() {
-        // console.log(this.context.currentPage, this.pageNumber);
-
         return this.context.currentPage === this.pageNumber ? (
             <section className={"splashPage"}>
                 <div className="content wrapper">  

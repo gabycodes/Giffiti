@@ -64,14 +64,12 @@ class App extends React.Component {
     this.setState({
       userGif: event.target.src
     }) 
-    // console.log(this.state.userGif);
   }
     render() {
       return (
         <div className="appHolder">
           <SplashPage />
           <Intro />
-          {/* <PickCanvas /> */}
           <SearchGifs userGif={this.updateUserGif} />
           <EditCanvas userChosenGif={this.state.userGif} userEmail={this.state.email}/>
         </div>
