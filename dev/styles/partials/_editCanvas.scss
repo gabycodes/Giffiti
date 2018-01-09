@@ -1,5 +1,12 @@
-.editCanvas h2 {
-    margin: 5vh auto;
+.editCanvas {
+    h2 {
+        margin: 5vh auto;
+    }
+    p, button {
+        text-align: center;
+        margin: 5vh auto;
+        font-size: 1.8rem;
+    }
 }
 .canvas {
     display: flex;
@@ -22,9 +29,7 @@ button.saveCanvas {
     border: none;
     background: rgb(38, 150, 255);
     color: white;
-    font-size: 1.8rem;
     padding: 7px 40px;
-    margin: 5vh auto;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;

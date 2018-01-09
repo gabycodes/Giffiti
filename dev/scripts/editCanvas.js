@@ -8,7 +8,8 @@ class EditCanvas extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            gifArray : []
+            gifArray : [],
+            gifAdded: false
         }
         this.pageNumber = 4;
         this.saveGifToCanvas = this.saveGifToCanvas.bind(this);
@@ -52,12 +53,19 @@ class EditCanvas extends React.Component {
         const userName = this.removePeriod(this.context.userEmail);
         const dbRef = firebase.database().ref();
         
-        dbRef.push({
-            url: userChosenGif,
-            public: true,
-            userEmail: this.context.userEmail,
-            user: userName
-        });
+        if(this.state.gifAdded === false) {
+            dbRef.push({
+                url: userChosenGif,
+                public: true,
+                userEmail: this.context.userEmail,
+                user: userName
+            });
+            this.setState(
+                {
+                    gifAdded: true
+                }
+            ), () => console.log("")
+        }
     }
 
     render() {
@@ -71,7 +79,12 @@ class EditCanvas extends React.Component {
                 <div className="canvas wrapper">
                     {gifs}
                 </div>
-                <button className="saveCanvas" onClick={this.saveGifToCanvas}>Add my Gif!</button>
+                    {this.state.gifAdded === false ?
+                        <button className="saveCanvas" onClick={this.saveGifToCanvas}>Add my Gif!</button>
+                        :
+                        <p>Your gif has been added, thanks for visiting!</p>
+                    }
+
             </section>
         ) : null
     }

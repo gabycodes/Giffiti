@@ -99,7 +99,7 @@ class Intro extends React.Component {
           <div className="content">
             <h2>How it works</h2>
             <p>Gifs are awesome, amirite? GIFFITI is an interactive gif collage where you can save all your favourite gifs in one board, or come together with your friends and make a themed board.</p>
-            <p>You're about to view HackerYou Cohort 16's favourite gifs and add your own to the collection!</p>
+            <p>You're about to view some of my favourite gifs and add your own to the collection!</p>
             <p>*This site displays many gifs at once and demands a fair amount of data... Something to keep in mind if you're on mobile!</p>
             <div>
               <nav>
